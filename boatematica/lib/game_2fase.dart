@@ -4,9 +4,9 @@ import 'package:boatematica/game_multiplicacao.dart';
 import 'package:boatematica/game_subtracao.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(GameMenuScreen());
+void main() => runApp(GameMenuScreen2());
 
-class GameMenuScreen extends StatelessWidget{
+class GameMenuScreen2 extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,30 +57,32 @@ class GameMenuScreen extends StatelessWidget{
                   ),
                 ),
                 InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => GameMultiplicacao()),
+                 onTap: () {
+                    final snackBar = SnackBar(
+                      content: 
+                      Text('Nível 3 - Bloqueado'),
                     );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   },
                   child: Container(
                     child: Image.asset(
-                      'assets/multiplicacao.png',
+                      'assets/multiplicacao_b.png',
                       width: 125,
                       height: 125,
                     ),
                   ),
                 ),
                 InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => GameDivisao()),
+                 onTap: () {
+                    final snackBar = SnackBar(
+                      content: 
+                      Text('Nível 4 - Bloqueado '),
                     );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   },
                   child: Container(
                     child: Image.asset(
-                      'assets/divisao.png',
+                      'assets/divisao_b.png',
                       width: 125,
                       height: 125,
                     ),

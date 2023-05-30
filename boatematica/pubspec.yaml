@@ -27,8 +27,11 @@ flutter:
       - assets\botao_creditos.png
       - assets\soma.png
       - assets\subtracao.png
+      - assets\subtracao_b.png
       - assets\divisao.png
+      - assets\divisao_b.png
       - assets\multiplicacao.png
+      - assets\multiplicacao_b.png
       - assets\parabens1.jpg
       - assets\parabens2.jpg
       - assets\parabens3.jpg

@@ -164,7 +164,7 @@ class _GameMultiplicacaoState extends State<GameMultiplicacao> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Terceira fase'),
+        title: const Text('Multiplicação'),
       ),
       body: Center(
         child: Column(

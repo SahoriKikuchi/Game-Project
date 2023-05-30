@@ -167,7 +167,7 @@ class _GameDivisaoState extends State<GameDivisao> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Quarta fase'),
+        title: const Text('Divisão'),
       ),
       body: Center(
         child: Column(

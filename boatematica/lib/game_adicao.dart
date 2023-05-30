@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:boatematica/game_2fase.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,7 +12,24 @@ class GameApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: GameAdicao(),
+      home: Stack(
+            //Esse Stack() é onde estamos colocando o .gif de fundo
+            children: <Widget>[
+              SizedBox.expand(
+                child: Image.asset(
+                  'assets/background.gif',
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Container(
+                alignment: Alignment.center,
+                  margin: const EdgeInsets.all(40),
+                  color: Colors.white.withOpacity(0.75),
+                  padding: const EdgeInsets.all(16.0),
+                  child: GameAdicao()
+              ),
+            ],
+          ),
     );
   }
 }
@@ -88,62 +106,74 @@ class _GameAdicaoState extends State<GameAdicao> {
         proximaPergunta();
       });
     } else {
-      showDialog(
+     showDialog(
         context: context,
         builder: (BuildContext context) {
           int index = random.nextInt(imagensConsolacao.length);
           String imagemConsolacao = imagensConsolacao[index];
           return AlertDialog(
             content: Image.asset(imagemConsolacao),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: const Text('Fechar'),
-              ),
-            ],
           );
         },
       );
 
       Future.delayed(const Duration(seconds: 2)).then((_) {
+        Navigator.of(context).pop();
         proximaPergunta();
       });
     }
   }
 
-  void proximaPergunta() {
-    numPergunta++;
-    if (numPergunta < 10) {
-      if (numPergunta % 3 == 0) {
-        aumentarDificuldade();
-      }
-      setState(() {
-        gerarQuestao();
-      });
-    } else {
-      showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (BuildContext context) {
+void proximaPergunta() {
+  numPergunta++;
+  if (numPergunta < 10) {
+    if (numPergunta % 3 == 0) {
+      aumentarDificuldade();
+    }
+    setState(() {
+      gerarQuestao();
+    });
+  } else {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        if (numAcertos > 7) {
+          // If number of correct answers is greater than 7, show a success message
           return AlertDialog(
-            title: const Text('Fim do jogo!'),
-            content: Text('Número de acertos: $numAcertos/10'),
+            title: const Text('Parabéns!'),
+            content: Text('Você concluiu a primeira fase com $numAcertos acertos.'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  MaterialPageRoute(builder: (context) => GameMenuScreen2());
+                },
+                child: const Text('Próxima Fase'),
+              ),
+            ],
+          );
+        } else {
+          // If number of correct answers is 7 or lower, show a retry message
+          return AlertDialog(
+            title: const Text('Fase não concluída'),
+            content: Text('Você precisa de mais acertos para concluir a fase atual.'),
             actions: [
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                   resetGame();
                 },
-                child: const Text('Jogar Novamente'),
+                child: const Text('Refazer Fase'),
               ),
             ],
           );
-        },
-      );
-    }
+        }
+      },
+    );
   }
+}
+
 
   void aumentarDificuldade() {
     dificuldade++;
@@ -162,7 +192,7 @@ class _GameAdicaoState extends State<GameAdicao> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Primeira fase'),
+        title: const Text('Adição'),
       ),
       body: Center(
         child: Column(

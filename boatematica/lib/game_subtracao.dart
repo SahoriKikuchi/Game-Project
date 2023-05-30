@@ -101,19 +101,12 @@ class _GameSubtracaoState extends State<GameSubtracao> {
           String imagemConsolacao = imagensConsolacao[index];
           return AlertDialog(
             content: Image.asset(imagemConsolacao),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: const Text('Fechar'),
-              ),
-            ],
           );
         },
       );
 
       Future.delayed(const Duration(seconds: 2)).then((_) {
+        Navigator.of(context).pop();
         proximaPergunta();
       });
     }
@@ -168,7 +161,7 @@ class _GameSubtracaoState extends State<GameSubtracao> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Primeira fase'),
+        title: const Text('Substração'),
       ),
       body: Center(
         child: Column(

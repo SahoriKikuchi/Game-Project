@@ -4,9 +4,9 @@ import 'package:boatematica/game_multiplicacao.dart';
 import 'package:boatematica/game_subtracao.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(GameMenuScreen());
+void main() => runApp(GameMenuScreen4());
 
-class GameMenuScreen extends StatelessWidget{
+class GameMenuScreen4 extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(

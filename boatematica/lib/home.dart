@@ -1,6 +1,6 @@
+import 'package:boatematica/game_1fase.dart';
 import 'package:flutter/material.dart';
 import 'package:boatematica/credits.dart';
-import 'package:boatematica/game.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -25,7 +25,7 @@ class Home extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => GameMenuScreen()),
+                      MaterialPageRoute(builder: (context) => GameMenuScreen1()),
                     );
                   },
                   child: Container(
