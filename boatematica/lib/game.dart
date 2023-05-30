@@ -1,5 +1,8 @@
+import 'package:boatematica/game_adicao.dart';
+import 'package:boatematica/game_divisao.dart';
+import 'package:boatematica/game_multiplicacao.dart';
+import 'package:boatematica/game_subtracao.dart';
 import 'package:flutter/material.dart';
-import 'package:boatematica/game.dart';
 
 void main() => runApp(GameMenuScreen());
 
@@ -26,7 +29,7 @@ class GameMenuScreen extends StatelessWidget{
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => GameMenuScreen()),
+                      MaterialPageRoute(builder: (context) => GameAdicao()),
                       //MaterialPageRoute(builder: (context) => GameAdicao()),
                     );
                   },
@@ -42,7 +45,7 @@ class GameMenuScreen extends StatelessWidget{
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => GameMenuScreen()),
+                      MaterialPageRoute(builder: (context) => GameSubtracao()),
                     );
                   },
                   child: Container(
@@ -57,7 +60,7 @@ class GameMenuScreen extends StatelessWidget{
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => GameMenuScreen()),
+                      MaterialPageRoute(builder: (context) => GameMultiplicacao()),
                     );
                   },
                   child: Container(
@@ -72,7 +75,7 @@ class GameMenuScreen extends StatelessWidget{
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => GameMenuScreen()),
+                      MaterialPageRoute(builder: (context) => GameDivisao()),
                     );
                   },
                   child: Container(
